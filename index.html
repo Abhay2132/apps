@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Node Pro</title>
+<meta name="viewport" content="width=device-width" />
+<meta name="description" content="Node  Project Hub">
+<head>
+	<script> if ( location.href.startsWith("http:") && ! location.href.includes(":3000")) location.href = "https" + location.href.slice(4); </script >
+<link rel="icon" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<style>
+
+* {
+	font-family: Fredoka, sans-serif, cambria,calibri;
+	font-weight: 350;
+}
+
+body {
+	opacity: 0;
+}
+
+</style>
+</head>
+<body>
+	
+<nav id="mainNav" class="dnl-bg">
+	<div id="hmbgr" onclick="hmbgr.t(sp.t)"> <hr /><hr /><hr /> </div>
+	<div id="mainH">
+		Node Pro
+	</div>
+	<div class="user-control"><div icon="user" onclick="t_uc.t()"></div>
+		<div class="uc-menu">
+			
+		</div>
+	</div>
+</nav>
+
+<div id="sidePanel" style="transform: translateX(-250px);">
+	<a href="/"  class="item" view="index" onclick="setView('index' , location.href.split('/').at(-1) != 'index'); return false;"> HOME </a>
+	<div class="item"> Contact me </div>
+	<div class="item"> About me </div>
+	<a href="/signup"  class="item" onclick="setView('signup' , location.href.split('/').at(-1) != 'index'); return false;"> LOGIN / SIGNUP </a>
+
+</div>
+
+	<div id="body" class="viewport">
+	<div id="index">
+	<div>
+		<div>Image Downloader</div>
+		<a href="/imgD" view="imgD" onclick="setView('imgD' , 1); return false;">Open</a>
+	</div>
+	<div>
+		<div>File Manager</div>
+		<a href="/fm" view="fm" onclick="setView('fm' , 1); return false;">Open</a>
+	</div>
+
+	<div>
+		<div>YoutTube Video Downloader </div>
+		<a href="/ytdl" view="ytdl" onclick="setView('ytdl' , 1); return false;">Open</a>
+	</div>
+	
+	<div>
+		<div>WhatsUp</div>
+		<a href="/wu" view="wu" onclick="setView('wu' , 1); return false;">Open</a>
+	</div>
+	
+	<div>
+		<div>File Downloader</div>
+		<a href="/fd" view="fd" onclick="setView('fd' , 1); return false;">Open</a>
+	</div>
+
+</div>
+	</div>
+</body>
+
+<script>
+const isDev = false;
+const __appV = 9;
+const pwd = "/opt/render/project/src";
+
+if ( isDev ){
+	for(let item of Object.keys(localStorage)) {
+		if ( item.startsWith("book") || item.startsWith("eruda")  || item == "lastYtdlVideo")  continue;
+		localStorage.removeItem(item)
+	}
+};
+history.pushState({ view : location.href.split("/").at(-1).split("?")[0].split(".")[0] } , "", "");
+if ('serviceWorker' in navigator)
+	navigator.serviceWorker.register('/js/sw.js');
+	
+const $=t=>document.querySelector(t),$$=t=>document.querySelectorAll(t),_getCJ={av:()=>parseInt(localStorage.getItem("appV")||"0"),getF:function(){const i=this.av();return new Promise(r=>{let e=(t,e,i)=>{var n=!1,a=!1;try{n=JSON.parse(t)}catch(t){a=t}if(a)return r({error:a});e(n),i&&localStorage.setItem("CJ",t)};var t=localStorage.getItem("CJ")||!1;i!=__appV||isDev||!t?fetch("/getCJ").then(t=>t.text()).then(t=>e(t,r,1)).catch(t=>r({error:t})):e(t,r)})},init:async function(t={}){const{a:e=!1,cb:i=()=>{}}=t;e&&console.time(e);var{css:t="",js:n="",error:a=!1}=await this.getF();if(a)return console.log(a);$("#cj_css")&&$("#cj_css").remove(),$("#cj_js")&&$("#cj_js").remove();const r=document.createElement("style"),o=document.createElement("script");r.innerHTML=t,o.innerHTML=n,r.setAttribute("id","cj_css"),o.setAttribute("id","cj_js"),document.body.appendChild(r),document.body.appendChild(o),localStorage.setItem("appV",__appV),e&&console.timeEnd(e),i()}};async function setView(t,e=!1){hmbgr.off(),sp.off();const i=JSON.parse(localStorage.getItem("CJ")).view;if(i.hasOwnProperty(t)){var{mainHeading:n,title:a,html:r}=i[t];const o=$("#body");o.style.transition="300ms",o.style.transform="translateY(100px)",o.style.opacity="0",await wait(300),o.innerHTML=r,$("#mainH").innerHTML=n,document.title=a,await wait(1),o.style.transform="translateY(0px)",o.style.opacity="1"}_getCJ.init({}),e?history.pushState({view:t},"",t):history.replaceState({view:t},"",t)}function _ca(){$$("[view]").forEach(e=>{e.getAttribute("listeneradded")||(e.setAttribute("listeneradded","true"),e.addEventListener("click",async function(t){t.preventDefault();t=e.getAttribute("view");await setView(t,location.href.split("/").at(-1)!=t)}))})}function setViewport(){$("#sidePanel").style.height=window.innerHeight-50+"px",$("body").style.height=window.innerHeight+"px",$("#wa-app")&&($("#wa-app").style.height=window.innerHeight-50+"px"),window.requestAnimationFrame(setViewport)}window.onpopstate=async function(t){t.state&&await setView(t.state.view)},window.viewportTicker=window.requestAnimationFrame(setViewport);
+
+</script>
+
+
+<script>_getCJ.init({a : "CJ ", cb : () => (document.body.style.opacity = '1') });</script>
+<script src="/socket.io/socket.io.js" ></script>
+</html>
