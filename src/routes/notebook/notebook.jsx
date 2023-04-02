@@ -19,18 +19,18 @@ export default function Component ({loadid}) {
 		bookID: "",
 		openSetting(id) { 
 			history.replaceState({id, type:"setting"}, null , null);
-			history.pushState(null, null, "/notebook?setting="+id);
-			// history.pushState({BookID: id} , id, "/notebook?setting="+id);
+			history.pushState(null, null, "/apps/notebook?setting="+id);
+			// history.pushState({BookID: id} , id, "/apps/notebook?setting="+id);
 			setData({ ...data, bookID: id, openSettingPanel: true }) 
 		},
 		openBook(id) {
 			history.replaceState({type:"editor", id}, null, null)
-			history.pushState(null, null, `/notebook/${id}`)
+			history.pushState(null, null, `/apps/notebook/${id}`)
 			setData({ ...data, mode: "editor", bookID: id }) 
 		},
 		openNBP() {
 			history.replaceState({type:"new"}, null, null)
-			history.pushState(null, null, `/notebook/new`)
+			history.pushState(null, null, `/apps/notebook/new`)
 			setData({ ...data, openNBPanel : true }) 
 		},
 		update: false
@@ -56,7 +56,7 @@ export default function Component ({loadid}) {
 			if(bookID == "new") return setData({...data, openNBPanel:true})
 
 			let book = getBook(bookID)
-			if(!book) return history.replaceState(null, null, '/notebook')
+			if(!book) return history.replaceState(null, null, '/apps/notebook')
 			setData({...data,  bookID, mode: "editor"})
 		}
 

@@ -12,7 +12,7 @@ export function PopupPanel ({id,close , onClose, title, children, footer, onDone
 		if(!data.close) setTimeout(()=>{
 			if(redFlag || data.close) return; 
 			setData({animate: "open"});
-		}, 0);
+		}, 10);
 		setTimeout(()=>{
 			if(redFlag || ! data.close ) return;
 			//console.log({data});
