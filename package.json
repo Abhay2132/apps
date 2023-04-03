@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host",
-    "build": "rm -rfv dist ; vite build",
+    "build": "rm -rfv dist ; vite build && node build.js",
     "preview": "vite preview"
   },
   "dependencies": {
