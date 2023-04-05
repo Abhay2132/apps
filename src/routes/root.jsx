@@ -2,7 +2,7 @@ import "../ui/themes/global.css";
 import "../App.css";
 import "./css/root.css";
 import { Outlet, Link } from "react-router-dom";
-import { useState, useRef, memo } from "react";
+import { useState, useEffect, useRef, memo } from "react";
 
 import home from "../assets/icons/home.svg";
 import about from "../assets/icons/about.svg";
@@ -17,13 +17,23 @@ export default function () {
 	});
 	const [open, setOpen] = useState(false);
 	const [active, setActive] = useState(ai);
-
+	const [up , setUp ] = useState(false);
 	const e = useRef((e) => {
 		setOpen(false);
 		let { target } = e;
 		if (target.tagName.toLowerCase() !== "a") target = target.parentNode;
 		setActive(target.getAttribute("data-index"));
 	});
+	
+	useEffect(() => {
+		itemD.forEach((item, i) => {
+			//console.log(location.pathname.split("?")[0].slice(5) , (item[0]))
+			if(location.pathname.slice(5) == (item[0]))
+				return setActive(i)
+		})
+	}, [up])
+	
+	window.forceSPUpdate = () => setUp(!up);
 
 	const items = itemD.map(([href, icon, text, cn], i) => (
 		<A
@@ -40,7 +50,7 @@ export default function () {
 
 	return (
 		<>
-			<nav>
+			<nav update={''+up} >
 				<div
 					className={open ? "hmbgr-x" : "hmbgr"}
 					onClick={() => setOpen(!open)}

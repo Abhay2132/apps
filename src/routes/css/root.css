@@ -5,12 +5,22 @@ nav {
 	display: flex;
 	height: var(--nav-H);
 
-	background-color: var(--bg-e);
+	background-color: var(--bg-f);
 	/*  background: rgba(0, 0, 0, 0.1);*/
 	color: var(--nav-clr);
 
 	/*  box-shadow: 0 3px 5px var(--nav-shd-clr);*/
 	z-index: 99;
+}
+
+nav:after {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 1px;
+	background: rgba(0,0,0,0.2);
+	position: absolute;
+	top: 50px;
 }
 
 #hmbgr:hover {
@@ -57,7 +67,7 @@ nav {
 /*  SIDE PANEL CSS  */
 #side-panel {
 	background-color: var(--side-panel-bg);
-	background: var(--bg-e);
+	background: var(--bg-f);
 	padding: 0;
 	margin: 0 !important;
 	width: min(50%, 200px);
@@ -71,6 +81,8 @@ nav {
 	position: fixed !important;
 
 	z-index: 999 !important;
+	
+	border-right: 1px solid rgba(0,0,0,0.2);
 }
 
 .side-panel-item:hover {

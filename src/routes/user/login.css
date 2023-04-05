@@ -1,9 +1,7 @@
 #login,
 #signup {
-	/* background-color: red;     */
-	margin: 5px;
+	margin: 15px;
 	border-radius: 10px;
-	/* background-color: #efefef; */
 	overflow: hidden;
 	box-shadow: 0 0 2px #aaa;
 }
