@@ -4,6 +4,8 @@
 	border-radius: 10px;
 	overflow: hidden;
 	box-shadow: 0 0 2px #aaa;
+	width: calc(100% - 30px);
+	box-sizing : border-box;
 }
 
 #login-title {
