@@ -11,12 +11,11 @@
 	height: 65px;
 }
 
-.error-panel>center:nth-child(2) {
+.error-panel > center:nth-child(2) {
 	font-size: 0.8rem;
 	font-weight: 400;
 	margin: 5px;
 }
-
 
 .loading-panel {
 	background: #eef;

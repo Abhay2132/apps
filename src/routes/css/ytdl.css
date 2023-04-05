@@ -2,8 +2,8 @@
 	--ytdl-bg: #3f51b5;
 }
 
-.ytdl-form{
-	background: var(--ytdl-bg) ;
+.ytdl-form {
+	background: var(--ytdl-bg);
 	margin: 0;
 	padding: 10px;
 	margin: 5px;
@@ -13,7 +13,7 @@
 .form-h2 {
 	margin: 5px;
 	padding: 5px 10px;
-	
+
 	border-left: 2px solid #eee;
 	color: #fff;
 	font-weight: 400;
@@ -59,10 +59,10 @@
 	font-size: 1.1rem;
 	--ytdl-row-h: 40px;
 	min-height: var(--ytdl-row-h);
-/*	line-height: var(--ytdl-row-h);*/
+	/*	line-height: var(--ytdl-row-h);*/
 }
 
-.ytdl-data-col1{
+.ytdl-data-col1 {
 	border-radius: 5px 0 0 5px;
 	text-align: center;
 	background: var(--bg-e);
@@ -74,7 +74,7 @@
 }
 
 .ytdl-data-col2 {
-/*	line-height: calc(var(--ytdl-row-h) - 8px);*/
+	/*	line-height: calc(var(--ytdl-row-h) - 8px);*/
 	border-radius: 0 5px 5px 0;
 	display: flex;
 	box-sizing: border-box !important;
@@ -86,22 +86,21 @@
 	background: var(--bg-d);
 }
 
-.audio-qualities, .video-qualities {
+.audio-qualities,
+.video-qualities {
 	display: flex;
 	width: 98%;
-/*	overflow-x: scroll;*/
+	/*	overflow-x: scroll;*/
 	flex-wrap: wrap;
 }
 
 .ytdl-data-col2[data-type="video"] > .audio-qualities,
-.ytdl-data-col2[data-type="audio"] > .video-qualities
- {
+.ytdl-data-col2[data-type="audio"] > .video-qualities {
 	display: none !important;
 }
 
-
-@media only screen and (min-width:1400px) {
-	#ytdl-data{
+@media only screen and (min-width: 1400px) {
+	#ytdl-data {
 		box-shadow: inset 0 0 0 2px var(--bg-c) !important;
 	}
 }

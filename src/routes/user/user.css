@@ -7,11 +7,11 @@
 	background: var(--bg-e);
 }
 
-#user>img:active {
+#user > img:active {
 	transform: scale(0.9);
 }
 
-#user>img {
+#user > img {
 	height: 40px;
 	aspect-ratio: 1/1;
 	border-radius: 50%;
@@ -63,7 +63,7 @@
 	padding-left: 50px;
 }
 
-.user-option-item>img {
+.user-option-item > img {
 	height: 25px;
 	aspect-ratio: 1/1;
 	position: absolute;
@@ -86,8 +86,7 @@
 	transform: translateY(0);
 }
 
-#user[mode="close"] #user-options
-{
+#user[mode="close"] #user-options {
 	opacity: 0;
 	transform: translateY(-5px) scale(0);
 }
